@@ -11,5 +11,11 @@ module.exports = {
         console.log(req.session.user)
         const treasure = await db.get_user_treasure(req.session.user.id)
         res.status(200).send(treasure)
+    },
+
+    getAllTreasure: async (req, res) => {
+        const db = req.app.get('db')
+        const allTreasures = await db.get_all_treasure()
+        res.status(200).send(allTreasures)
     }
 }
